@@ -1,1 +1,5 @@
 .direnv
+!shell.nix
+!README
+!*.asm
+*
