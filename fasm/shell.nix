@@ -3,5 +3,5 @@
 }:
 pkgs.mkShellNoCC {
   name = "dev-shell";
-  packages = with pkgs; [ fasmg ];
+  packages = with pkgs; [ fasm ];
 }
