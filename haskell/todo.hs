@@ -1,23 +1,36 @@
+import Control.DeepSeq
 import Control.Exception (IOException, catch)
 import Data.ByteString (hGetContents, unpack)
 import Data.List
-import GHC.IO.IOMode (IOMode (ReadMode, WriteMode))
-import System.Environment
-import GHC.IO.StdHandles (openFile)
 import Data.Text.Encoding (decodeUtf8)
+import GHC.IO.IOMode (IOMode (ReadMode, WriteMode))
+import GHC.IO.StdHandles (openFile)
+import System.Environment
+
+import Control.Monad qualified as M
+import Data.List qualified as L
+import GHC.IO.Handle (hClose)
+import System.Directory qualified as D
+import System.Environment qualified as E
+import System.IO qualified as I
 
 main =
-  let
-    args = getArgs
-   in
-    do
-      todoFile <- openFile ".todo" ReadMode
-      tds <- hGetContents todoFile
-      args <- args
-      delegate args $ read $ show tds
+  do
+    let args = getArgs
 
-safeLoadFile :: FilePath -> IO [String]
-safeLoadFile p = lines <$> readFile p `catch` ((\_ -> return []) :: (IOException -> IO String))
+    let toDoPath = ".todo"
+    fileExist <- D.doesFileExist toDoPath
+    M.unless fileExist $ I.writeFile toDoPath "\n"
+    tds <-
+      I.withFile
+        toDoPath
+        ReadMode
+        ( \h -> do
+            map read . lines <$> I.hGetContents h
+        )
+
+    args <- args
+    delegate args tds
 
 delegate :: [String] -> [Todo] -> IO ()
 delegate [] tds = putStrLn $ showTodos tds
