@@ -6,16 +6,16 @@
 * [nim](https://nim-lang.org)
 * [ocaml](https://ocaml.org)
 * [ruby](https://ruby-lang.org)
+* [zig](https://ziglang.org/)
 
 
 # Objectives
-Make a nix env for every language
 
-objective         | elixir | fasm | gleam | haskell | nim | ocaml | ruby
-------------------|--------|------|-------|---------|-----|-------|-----
-nix env           | [ ]    | [x]  | [ ]   | [x]     | [ ] | [ ]   | [ ]
-hello world       | [ ]    | [x]  | [ ]   | [x]     | [ ] | [ ]   | [ ]
-todo cli          | [ ]    | [ ]  | [ ]   | [ ]     | [ ] | [ ]   | [ ]
-todo web app      | [ ]    | [ ]  | [ ]   | [ ]     | [ ] | [ ]   | [ ]
-dyn func dispatch | [ ]    | [ ]  | [ ]   | [ ]     | [ ] | [ ]   | [ ]
+objective         | elixir | fasm | gleam | haskell | nim | ocaml | ruby | zig
+------------------|--------|------|-------|---------|-----|-------|------|-----
+nix env           | [ ]    | [x]  | [ ]   | [x]     | [ ] | [ ]   | [ ]  | [ ]
+hello world       | [ ]    | [x]  | [ ]   | [x]     | [ ] | [ ]   | [ ]  | [ ]
+todo cli          | [ ]    | [ ]  | [ ]   | [ ]     | [ ] | [ ]   | [ ]  | [ ]
+todo web app      | [ ]    | [ ]  | [ ]   | [ ]     | [ ] | [ ]   | [ ]  | [ ]
+dyn func dispatch |  ?     | [ ]  |  ?    |  ?      |  ?  |  ?    | [ ]  |  ?
 
