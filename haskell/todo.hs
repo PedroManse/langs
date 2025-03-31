@@ -21,13 +21,7 @@ main =
     let toDoPath = ".todo"
     fileExist <- D.doesFileExist toDoPath
     M.unless fileExist $ I.writeFile toDoPath "\n"
-    tds <-
-      I.withFile
-        toDoPath
-        ReadMode
-        ( \h -> do
-            map read . lines <$> I.hGetContents h
-        )
+    tds<- readFile toDoPath
 
     args <- args
     delegate args tds
